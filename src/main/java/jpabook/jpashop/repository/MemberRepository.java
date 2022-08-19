@@ -24,13 +24,13 @@ public class MemberRepository {
     }
 
     public List<Member> findAll(){//jpql문법을 사용하여 검색
-        return em.createQuery("select m form Member m", Member.class)
+        return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
 
     }
 
     public List<Member> findByName(String name){//jpql문법을 사용하여 검색
-        return em.createQuery("select m form Member m where m.name = :name", Member.class)
+        return em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name",name)
                 .getResultList();
     }
