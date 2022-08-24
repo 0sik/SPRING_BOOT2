@@ -23,7 +23,7 @@ public abstract class Item {//추상클래스로 만들기 (abstract)
     private int stockQuantity;
 
     @ManyToMany(mappedBy = "items",fetch = FetchType.LAZY)
-    private List<Category> categoryies = new ArrayList<>();
+    private List<Category> categoryies = new ArrayList<Category>();
 
     //==비지니스 로직==//
 
@@ -33,10 +33,11 @@ public abstract class Item {//추상클래스로 만들기 (abstract)
     }
 
     public void  removeStock(int quantity){
-        int restStock = this.stockQuantity = quantity;
+        int restStock = this.stockQuantity - quantity;
         if(restStock < 0 ){
             throw new NotEnoughStockException("need more stock");
         }
         this.stockQuantity = restStock;
     }
 }
+
